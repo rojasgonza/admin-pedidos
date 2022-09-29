@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link className="navbar-brand" to={"/pedidos"}>APP DE PEDIDOS</Link>
+            <Link className="navbar-brand" to={"/pedidos"}>Pedidos</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -18,7 +18,7 @@ function Header() {
                             Pedidos
                         </a>
                         <div className="dropdown-menu">
-                            <a className="dropdown-item" href="/nuevo-pedido" >NuevoPedido</a>
+                            <Link className="dropdown-item" to={"/nuevo-pedido"} >NuevoPedido</Link>
                             <Link className="dropdown-item" to={"/pedidos"}>Pedidos</Link>
                         </div>
                     </li>

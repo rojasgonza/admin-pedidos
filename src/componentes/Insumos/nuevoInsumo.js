@@ -41,8 +41,15 @@ function NuevoInsumo(){
         })
     }
 
+    const validarInsumo = ()=>{
+        const {nombre} = insumo;
 
+      let valido = !nombre.length
+            return valido;
+        
+    }
 
+    
 
     return(
         <Fragment>
@@ -54,7 +61,7 @@ function NuevoInsumo(){
                 <label className="form-label">Nombre:</label>
                 <input type="text" className="form-control" name="nombre"  onChange={actualizarState}/>
 
-                <button type='submit' className='btn btn-success mt-2'>Cargar</button>
+                <button type='submit' className='btn btn-success mt-2' disabled={validarInsumo()}>Cargar</button>
             </form>
 
 

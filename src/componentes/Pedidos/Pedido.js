@@ -10,7 +10,6 @@ function Pedido() {
     const [empleado, guardarEmpleado] = useState([]);
     const [local, guardarLocal] = useState([]);
     const [lista, guardarLista] = useState([]);
-
     const consultarAPI = async () => {
         const pedidosConsulta = await clienteAxios.get(`/pedidos/${id}`);
         //colocar datos en el state
@@ -18,55 +17,64 @@ function Pedido() {
         guardarEmpleado(pedidosConsulta.data.empleado);
         guardarLocal(pedidosConsulta.data.local);
         guardarLista(pedidosConsulta.data.lista)
+
+
     }
     useEffect(() => {
         consultarAPI();
     }, []);
+
     return (
 
         <Fragment>
-            <div className='mt-5'>
-               
-                    <ReactHtmlTableToExcel
+            <div className='col-sm-12 mt-2'>
+
+                <ReactHtmlTableToExcel
                     id="botonExport"
                     table="tablaPedido"
-                    filename='pedido'
+                    filename={`${local.nombre} ${pedidos.fecha}`}
                     className="btn btn-success"
                     sheet='pagina1'
                     buttonText='Excel'
-                    />
-      
+                />
+                    <input type="button" className="btn btn-success m-2"  value="Imprimir" onClick={() => { window.print('#tablaPedido') }} />
+
                 <h2>Pedido para: {local.nombre} - {pedidos.fecha}</h2>
-                <div className=' mt-5'>
+                <div className='mt-2'>
+
                     <table className='table table-bordered' id='tablaPedido'>
 
                         <thead>
                             <tr>
                                 <th colSpan={2}>Local: {local.nombre}</th>
-                                <th colSpan={2}>Fecha: {pedidos.fecha}</th>
+                                <th colSpan={3}>Fecha: {pedidos.fecha}</th>
 
                             </tr>
                             <tr>
-                                <th colSpan={4}>Empleado: {empleado.nombre} {empleado.apellido}</th>
+                                <th colSpan={5}>Empleado: {empleado.nombre} {empleado.apellido}</th>
                             </tr>
                             <tr>
-                                <th colSpan={4}>Aclaraciones: {pedidos.aclaraciones}</th>
+                                <th colSpan={5}>Aclaraciones: {pedidos.aclaraciones}</th>
                             </tr>
                             <tr>
-                                <th>cod</th>
-                                <th>nombre</th>
-                                <th>cantidad</th>
-                                <th>unidad</th>
+                                <th>Codigo sistema</th>
+                                <th>Nombre</th>
+                                <th>Cantidad</th>
+                                <th>Unidad</th>
+                                <th>Nota</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 lista.map((item, index) =>
                                     <tr key={index}>
-                                        <th>{item.insumos.codigoInsumo}</th>
-                                        <td>{item.insumos.nombre}</td>
-                                        <td>{item.cantidad}</td>
-                                        <td>{item.medida.nombre}</td>
+                                        <th className='mt-1 mb-1 pt-1 pb-1'>{item.insumos.codigoInsumo}</th>
+                                        <td className='mt-1 mb-1 pt-1 pb-1'>{item.insumos.nombre}</td>
+                                        <td className='mt-1 mb-1 pt-1 pb-1'>{item.cantidad}</td>
+                                        <td className='mt-1 mb-1 pt-1 pb-1'>{item.medida.nombre}</td>
+                                        <td className='mt-1 mb-1 pt-1 pb-1'></td>
+
                                     </tr>)
                             }
                         </tbody>

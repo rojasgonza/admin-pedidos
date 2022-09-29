@@ -1,0 +1,5 @@
+
+boton borrar pedido
+boton borrar locales
+boton borrar insumos
+boton borrar empleados

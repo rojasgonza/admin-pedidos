@@ -41,7 +41,13 @@ function NuevoLocal(){
             navigate('/locales')
         })
     }
+    const validarLocal = ()=>{
+        const {nombre} = local;
 
+      let valido = !nombre.length 
+            return valido;
+        
+    }
 
 
 
@@ -56,7 +62,7 @@ function NuevoLocal(){
                 <input type="text" className="form-control" name="direccion"  onChange={actualizarState}/>
                 <label className="form-label">Telefono:</label>
                 <input type="number" className="form-control" name="telefono"  onChange={actualizarState}/>
-                <button type='submit' className='btn btn-success mt-2'>Cargar</button>
+                <button type='submit' className='btn btn-success mt-2' disabled={validarLocal()}>Cargar</button>
             </form>
 
 

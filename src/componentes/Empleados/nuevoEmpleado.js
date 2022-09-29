@@ -43,6 +43,13 @@ function NuevoEmpleado(){
         })
     }
 
+    const validarEmpleado = ()=>{
+        const {nombre, apellido, cargo, email} = empleado;
+
+      let valido = !nombre.length || !apellido.length || !email.length
+            return valido;
+        
+    }
 
 
 
@@ -59,7 +66,7 @@ function NuevoEmpleado(){
                 <input type="text" className="form-control" name="cargo"  onChange={actualizarState}/>
                 <label className="form-label">Email:</label>
                 <input type="email" className="form-control" name="email"  onChange={actualizarState}/>
-                <button type='submit' className='btn btn-success mt-2'>Cargar</button>
+                <button type='submit' className='btn btn-success mt-2' disabled={validarEmpleado()}>Cargar</button>
             </form>
 
 

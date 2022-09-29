@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import clienteAxios from '../../config/axios';
-import { Link, useNavigate } from 'react-router-dom';
-import DataTable, { createTheme } from 'react-data-table-component';
+import { Link } from 'react-router-dom';
+import DataTable from 'react-data-table-component';
 import Swal from 'sweetalert2';
 function Empleados() {
-  const navigate = useNavigate();
 
   //1-configurar hooks
   const [empleados, guardarEmpleados] = useState([]);
@@ -88,7 +87,7 @@ function Empleados() {
           <Link className='btn btn-success' to="/nuevo-empleado">Nuevo</Link>
         }
         highlightOnHover
-        fixedHeaderScrollHeight='450px'
+        fixedHeaderScrollHeight='100vh'
      
         />
     </Fragment>

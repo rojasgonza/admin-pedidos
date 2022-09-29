@@ -38,6 +38,7 @@ function App() {
             <Route path='/locales' element={<Locales/>}/>
             <Route path="/nuevo-local" element={<NuevoLocal/>}/>
             <Route path='/locales/editar/:id' element={<EditarLocal/>}/>
+            <Route path='/' element={<NuevoPedido/>}/>
             
             <Route path='/pedidos' element={<Pedidos/>}/>
             <Route path='/nuevo-pedido' element={<NuevoPedido/>}/>

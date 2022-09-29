@@ -33,10 +33,10 @@ function Pedidos() {
             name: 'Empleado',
             selector: row => row.empleado.nombre
         },
-        {
-            name: 'Borrar',
+         {
+             name: 'Borrar',
             cell: (row) => <button className='btn btn-danger' onClick={() => eliminarPedido(row._id)} >Borrar</button>
-        },
+         },
         {
             name: 'Ver',
             cell: (row) => <Link to={`/pedidos/${row._id}`} type="button" className="btn btn-primary">Ver</Link>
@@ -68,15 +68,16 @@ function Pedidos() {
         <Fragment>
 
             <h1>Pedidos</h1>
+            <div className='col-md-12 col-sm-6'>
             <DataTable columns={columns}
                 data={pedidos}
                 pagination
                 fixedHeader
                 pedidos={pedidos}
                 highlightOnHover
-                fixedHeaderScrollHeight='450px'
-
+                fixedHeaderScrollHeight='100vh'
             />
+            </div>
         </Fragment>
 
     )
